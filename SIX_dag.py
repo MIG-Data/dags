@@ -15,13 +15,13 @@ from airflow.sensors.http_sensor import HttpSensor
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.email_operator import EmailOperator
 from airflow.contrib.operators.databricks_operator import DatabricksSubmitRunOperator
-
 from datetime import datetime, timedelta
 
 default_args = {
-    'owner': 'MIG',
+    'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': airflow.utils.dates.days_ago(0),
+    'start_date': datetime(2020, 3, 5),
+    'end_date': None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
     'email_on_retry': True,
@@ -34,5 +34,6 @@ dag = DAG('SIX_dag', default_args=default_args, schedule_interval= '55 20 * * *'
 six_sh = BashOperator(
     task_id='SHR',
     bash_command="/home/ec2-user/SIX/SIX.sh ",
+    queue="pipeline2",
     dag=dag)
 
