@@ -24,7 +24,8 @@ email_list = ['tcai@migcap.com', 'yjeon@migcap.com']
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': airflow.utils.dates.days_ago(0),
+    'start_date': datetime(2020, 3, 5),
+     'end_date' : None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
     'email_on_retry': True,
