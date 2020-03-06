@@ -18,7 +18,7 @@ from airflow.contrib.operators.databricks_operator import DatabricksSubmitRunOpe
 
 from datetime import datetime, timedelta
 
-
+email_list = ['tcai@migcap.com', 'yjeon@migcap.com']
 
 
 default_args = {
@@ -34,12 +34,14 @@ default_args = {
 
 dag = DAG('amazon_top100_dag', default_args=default_args, schedule_interval= '30 12 * * sun,mon,tue,wed,thu,fri,sat ')
 
-'''
+
 amazon_scrape = BashOperator(
-    task_id='bash_test',
-    bash_command="/home/ec2-user/SHELL/AMAZON.sh >> /home/ec2-user/SHELL/log/amazon.log 2>&1 ",
+    task_id='amazon_scrape',
+    bash_command="/home/ec2-user/SHELL/AMAZON2.sh ",
+	email_on_failure = True,
+	email = email_list,
     dag=dag)
-'''
+
 
 notebook_task_params = {
         'existing_cluster_id': '0128-230140-huts317', # cluster id of MIG Cluster 2
@@ -49,7 +51,9 @@ notebook_task_params = {
         }
 notebook_task = DatabricksSubmitRunOperator(
         task_id = 'notebook_task',
+	email_on_failure = True,
+	email = email_list,
         dag = dag,
         json = notebook_task_params
         )
-
+amazon_scrape.set_downstream(notebook_task)
