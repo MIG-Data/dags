@@ -35,5 +35,6 @@ dag = DAG('Twitter_dag', default_args=default_args, schedule_interval= '15 20 * 
 twitter_sh = BashOperator(
     task_id='GET_TSLA_TWEET',
     bash_command="/home/ec2-user/GET_OLD_TWEET/GET_OLD_TWEET_TSLA.sh ",
+    queue='pipeline9',
     dag=dag)
 

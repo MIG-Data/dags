@@ -57,5 +57,6 @@ dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '15 20 * 
 twitter_sh = BashOperator(
     task_id='GET_TSLA_Webhose',
     bash_command="/home/ec2-user/GET_Webhose/GET_Webhose_TSLA.sh ",
+    queue='pipeline9',
     dag=dag)
 

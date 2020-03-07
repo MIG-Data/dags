@@ -41,6 +41,7 @@ amazon_scrape = BashOperator(
     bash_command="/home/ec2-user/SHELL/AMAZON2.sh ",
 	email_on_failure = True,
 	email = email_list,
+    queue='pipeline9',
     dag=dag)
 
 
