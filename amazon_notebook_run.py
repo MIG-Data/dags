@@ -56,6 +56,7 @@ notebook_task = DatabricksSubmitRunOperator(
 	email_on_failure = True,
 	email = email_list,
         dag = dag,
+	queue='pipeline9',
         json = notebook_task_params
         )
 
