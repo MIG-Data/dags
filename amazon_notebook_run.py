@@ -33,7 +33,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('amazon_top100_dag', default_args=default_args, schedule_interval= '30 12 * * sun,mon,tue,wed,thu,fri,sat ')
+dag = DAG('amazon_notebook_dag', default_args=default_args, schedule_interval= '30 12 * * sun,mon,tue,wed,thu,fri,sat ')
 
 '''
 amazon_scrape = BashOperator(
