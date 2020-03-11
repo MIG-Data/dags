@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime.now() - timedelta(days=-1),
+    'start_date': datetime.now(),
     'end_date': None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
@@ -29,7 +29,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('SIX_dag', default_args=default_args, schedule_interval= '10 * * * *')
+dag = DAG('SIX_dag', default_args=default_args, schedule_interval= '1 * * * *')
 
 six_sh = BashOperator(
     task_id='SHR',
