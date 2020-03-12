@@ -30,6 +30,7 @@ default_args = {
     'email_on_failure': True,
     'email_on_retry': True,
     'retries': 5,
+	'wait_for_downstream': True,
     'retry_delay': timedelta(minutes=5)
 }
 
