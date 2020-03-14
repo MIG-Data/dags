@@ -33,7 +33,7 @@ dag = DAG('MSI_dag', default_args=default_args, schedule_interval= '@weekly')
 
 six_sh = BashOperator(
     task_id='SCRAPE',
-    bash_command="python3 /home/ec2-user/Scrapes/MSI/partner_network.py ",
+    bash_command="python /home/ec2-user/Scrapes/MSI/partner_network.py ",
     queue="pipeline1",
     dag=dag)
 
