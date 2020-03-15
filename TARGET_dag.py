@@ -33,7 +33,7 @@ dag = DAG('TARGET_INVENTORY', default_args=default_args, schedule_interval= '@da
 
 target_sh = BashOperator(
     task_id='SHR',
-    bash_command="cd /home/ec2-user/target/target/spiders && python3 -m scrapy crawl target_data.py ",
+    bash_command="cd /home/ec2-user/TARGET_2/target/spiders && python3 -m scrapy crawl target_data.py ",
     queue="pipeline9",
     dag=dag)
 
