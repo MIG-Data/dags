@@ -38,3 +38,11 @@ twitter_sh = BashOperator(
     queue='pipeline9',
     dag=dag)
 
+Topic_Modeling_sh = BashOperator(
+    task_id='Topic_Modeling_Twitter',
+    bash_command="/home/ec2-user/GET_OLD_TWEET/Twitter_topic_modeling.sh ",
+    queue='pipeline9',
+    dag=dag)
+
+twitter_sh.set_downstream(Topic_Modeling_sh)
+
