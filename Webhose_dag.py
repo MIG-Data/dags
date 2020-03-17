@@ -54,9 +54,17 @@ default_args = {
 
 dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '15 20 * * *')
 
-twitter_sh = BashOperator(
+webhose_sh = BashOperator(
     task_id='GET_TSLA_Webhose',
     bash_command="/home/ec2-user/GET_Webhose/GET_Webhose_TSLA.sh ",
     queue='pipeline9',
     dag=dag)
+
+Topic_Modeling_sh = BashOperator(
+    task_id='Topic_Modeling_Webhose',
+    bash_command="/home/ec2-user/GET_Webhose/Webhose_topic_modeling.sh ",
+    queue='pipeline9',
+    dag=dag)
+
+webhose_sh.set_downstream(Topic_Modeling_sh)
 
