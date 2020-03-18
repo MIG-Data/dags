@@ -33,7 +33,7 @@ dag = DAG('SEC_form4_dag', default_args=default_args, schedule_interval= '@weekl
 
 secform4_sh = BashOperator(
     task_id='SEC_FORM4_SCRAPE',
-    bash_command="python3 /home/ec2-user/secform4_scrape/secform4_scrape_aws.py ",
+    bash_command="python3 /home/ec2-user/Scrapes/secform4_scrape/secform4_scrape_aws.py ",
     queue="pipeline1",
     dag=dag)
 
