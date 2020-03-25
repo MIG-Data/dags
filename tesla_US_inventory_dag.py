@@ -1,4 +1,4 @@
-"""
+@weekly"""
 #'wait_for_downstream': True,Created on Mon Feb 24 14:02:41 2020
 
 @author: tcai
@@ -23,7 +23,8 @@ email_list = ['tcai@migcap.com', 'yjeon@migcap.com']
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': airflow.utils.dates.days_ago(1),
+    'start_date': datetime(2020, 3, 23),
+    'end_date': None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
     'email_on_retry': True,
@@ -32,7 +33,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('tesla_US_inventory_dag', default_args=default_args, schedule_interval= '30 12 * * sun,mon,tue,wed,thu,fri,sat ')
+dag = DAG('tesla_US_inventory_dag', default_args=default_args, schedule_interval= '@weekly')
 
 
 tesla_US_inventory_scrape = BashOperator(
