@@ -39,8 +39,6 @@ dag = DAG('tesla_US_inventory_dag', default_args=default_args, schedule_interval
 tesla_US_inventory_scrape = BashOperator(
     task_id='tesla_US_inventory_scrape',
     bash_command="/home/ec2-user/SHELL/tesla.sh ",
-	email_on_failure = True,
-	email = email_list,
     queue = 'pipeline9',
     dag=dag)
 
