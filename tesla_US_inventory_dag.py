@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Feb 24 14:02:41 2020
+#'wait_for_downstream': True,Created on Mon Feb 24 14:02:41 2020
 
 @author: tcai
 """
@@ -20,7 +19,7 @@ from datetime import datetime, timedelta
 
 email_list = ['tcai@migcap.com', 'yjeon@migcap.com']
 
-
+#'wait_for_downstream': True,
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
@@ -29,7 +28,7 @@ default_args = {
     'email_on_failure': True,
     'email_on_retry': True,
     'retries': 5,
-    'wait_for_downstream': True,
+   
     'retry_delay': timedelta(minutes=5)
 }
 
