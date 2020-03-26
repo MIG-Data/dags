@@ -34,7 +34,7 @@ dag = DAG('LB_BnB', default_args=default_args, schedule_interval= '0 0 * * *')
 
 six_sh = BashOperator(
     task_id='SCRAPE',
-    bash_command="/home/ec2-user/LB/SHELL/BNB.sh ",
+    bash_command="python /home/ec2-user/LB/PYTHON/BNB.py ",
     queue="pipeline2",
     dag=dag)
 
