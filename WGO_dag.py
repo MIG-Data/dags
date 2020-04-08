@@ -22,7 +22,7 @@ from datetime import datetime, timedelta
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 3, 25),
+    'start_date': datetime(2020, 4, 8),
     'end_date': None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
@@ -31,11 +31,11 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('WGO_dag', default_args=default_args, schedule_interval= '@weekly')
+dag = DAG('WGO_dag', default_args=default_args, schedule_interval= '@daily')
 
 secform4_sh = BashOperator(
     task_id='WGO_RV_Trader_SCRAPE',
-    bash_command="python3 /home/ec2-user/WGO/rv_data_scrape.py ",
+    bash_command="python3 /home/ec2-user/WGO/rv_trader_mobile_scrape.py ",
     queue="pipeline2",
     dag=dag)
 
