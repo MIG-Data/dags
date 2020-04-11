@@ -34,5 +34,5 @@ dag = DAG('IHME', default_args=default_args, schedule_interval= '0 0 * * *')
 ihme_sh = BashOperator(
     task_id='SCRAPE',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/ihme.py ",
-    queue="pipeline5",
+    queue="pipeline7",
     dag=dag)
