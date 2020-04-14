@@ -33,9 +33,22 @@ default_args = {
 
 dag = DAG('WGO_dag', default_args=default_args, schedule_interval= '@daily')
 
-secform4_sh = BashOperator(
+WGO_sh = BashOperator(
     task_id='WGO_RV_Trader_SCRAPE',
     bash_command="python3 /home/ec2-user/WGO/rv_trader_mobile_scrape.py ",
     queue="pipeline2",
     dag=dag)
 
+notebook_task_params = {
+        'existing_cluster_id': '0128-230140-huts317', # cluster id of MIG Cluster 2
+        'notebook_task': {
+                'notebook_path': '/Users/garquette@migcap.com/WGO_inventory_analysis'
+                }
+        }
+WGO_notebook_task = DatabricksSubmitRunOperator(
+        task_id = 'WGO_notebook_task',
+        dag = dag,
+        queue = 'pipeline2',
+        json = notebook_task_params
+        )
+WGO_sh.set_downstream(WGO_notebook_task)
