@@ -23,6 +23,6 @@ dag = DAG('HCSG', default_args=default_args, schedule_interval= '@daily')
 
 five_sh = BashOperator(
     task_id='SCRAPE',
-    bash_command="source /home/ec2-user/Scrapes/.venv/bin/activate && python /home/ec2-user/Scrapes/HCSG/PYTHON/Jpb_posts.py ",
+    bash_command="source /home/ec2-user/Scrapes/.venv/bin/activate && python /home/ec2-user/Scrapes/HCSG/PYTHON/Job_posts.py ",
     queue="pipeline1",
     dag=dag)
