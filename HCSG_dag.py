@@ -19,7 +19,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('CA_DPH_COVID', default_args=default_args, schedule_interval= '@daily')
+dag = DAG('HCSG', default_args=default_args, schedule_interval= '@daily')
 
 five_sh = BashOperator(
     task_id='SCRAPE',
