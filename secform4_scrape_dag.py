@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 3, 16),
+    'start_date': datetime(2020, 5, 1),
     'end_date': None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
@@ -33,7 +33,7 @@ dag = DAG('SEC_form4_dag', default_args=default_args, schedule_interval= '@weekl
 
 secform4_sh = BashOperator(
     task_id='SEC_FORM4_SCRAPE',
-    bash_command="python3 /home/ec2-user/secform4_scrape/secform4_scrape_aws.py ",
+    bash_command="python3 /home/ec2-user/secform4_scrape/SEC_API.py ",
     queue="pipeline2",
     dag=dag)
 
