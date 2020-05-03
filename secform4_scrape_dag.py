@@ -37,3 +37,11 @@ secform4_sh = BashOperator(
     queue="pipeline2",
     dag=dag)
 
+secform4_process_sh = BashOperator(
+    task_id='SEC_FORM4_PROCESS',
+    bash_command="python3 /home/ec2-user/secform4_scrape/SEC_form4_process.py ",
+    queue="pipeline2",
+    dag=dag)
+
+secform4_sh.set_downstream(secform4_process_sh)
+
