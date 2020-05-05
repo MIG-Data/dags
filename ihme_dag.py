@@ -30,9 +30,16 @@ default_args = {
 }
 
 dag = DAG('IHME', default_args=default_args, schedule_interval= '0 0 * * *')
+dag2 = DAG('IHME2', default_args=default_args, schedule_interval= '0 0 * * *')
 
 ihme_sh = BashOperator(
     task_id='SCRAPE',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/ihme.py ",
     queue="pipeline5",
     dag=dag)
+
+ihme_sh2 = BashOperator(
+    task_id='SCRAPE',
+    bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/ihme_summary.py ",
+    queue="pipeline5",
+    dag=dag2)
