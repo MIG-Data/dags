@@ -57,4 +57,4 @@ flight_sh = BashOperator(
     task_id='SCRAPE',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/flightradar.py ",
     queue="pipeline5",
-    dag=dag3)
+    dag=dag4)
