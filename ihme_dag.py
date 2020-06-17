@@ -34,7 +34,8 @@ dag2 = DAG('IHME2', default_args=default_args, schedule_interval= '0 0 * * *')
 dag3 = DAG('Covidtracking', default_args=default_args, schedule_interval= '0 0 * * *')
 dag4 = DAG('flightradar', default_args=default_args, schedule_interval= '0 0 * * *')
 dag5 = DAG('MTA', default_args=default_args, schedule_interval= '0 0 * * *')
-
+dag6 = DAG('KFF', default_args=default_args, schedule_interval= '0 12 * * MON')
+       
 ihme_sh = BashOperator(
     task_id='SCRAPE',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/ihme.py ",
@@ -64,3 +65,9 @@ mta_sh = BashOperator(
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/mta.py ",
     queue="pipeline5",
     dag=dag5)
+
+kff_sh = BashOperator(
+    task_id='SCRAPE',
+    bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/kff.py ",
+    queue="pipeline5",
+    dag=dag6)
