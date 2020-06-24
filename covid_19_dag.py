@@ -25,7 +25,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('covid_19', default_args=default_args, schedule_interval= '@daily')
+dag = DAG('covid_19', default_args=default_args, schedule_interval= '30 19 * * *')
 
 global_case_sh = BashOperator(
     task_id='JHU_global_case_scrape',
