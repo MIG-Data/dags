@@ -59,13 +59,13 @@ reddit_WSB_sh = BashOperator(
     task_id='reddit_WSB',
     bash_command="python3 /home/ec2-user/GET_Webhose/webhose_reddit_WSTbet.py ",
     queue="pipeline9",
-    dag=dag)
+    dag=reddit_WSB_dag)
 
 webhose_sh = BashOperator(
     task_id='GET_TSLA_Webhose',
     bash_command="/home/ec2-user/GET_Webhose/GET_Webhose_TSLA.sh ",
     queue='pipeline9',
-    dag=reddit_WSB_dag)
+    dag=dag)
 
 Topic_Modeling_sh = BashOperator(
     task_id='Topic_Modeling_Webhose',
