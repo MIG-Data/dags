@@ -42,7 +42,7 @@ def outer_task_success_callback(context, email):
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 3, 5),
+    'start_date': datetime(2020, 6, 24),
      'end_date' : None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
@@ -53,12 +53,19 @@ default_args = {
 }
 
 dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '15 20 * * *')
+reddit_WSB_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '0 20 * * *')
+
+reddit_WSB_sh = BashOperator(
+    task_id='reddit_WSB',
+    bash_command="python3 /home/ec2-user/GET_Webhose/webhose_reddit_WSTbet.py ",
+    queue="pipeline9",
+    dag=dag)
 
 webhose_sh = BashOperator(
     task_id='GET_TSLA_Webhose',
     bash_command="/home/ec2-user/GET_Webhose/GET_Webhose_TSLA.sh ",
     queue='pipeline9',
-    dag=dag)
+    dag=reddit_WSB_dag)
 
 Topic_Modeling_sh = BashOperator(
     task_id='Topic_Modeling_Webhose',
