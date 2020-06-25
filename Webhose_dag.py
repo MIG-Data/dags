@@ -58,7 +58,7 @@ reddit_WSB_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval
 reddit_WSB_sh = BashOperator(
     task_id='reddit_WSB',
     bash_command="python3 /home/ec2-user/GET_Webhose/webhose_reddit_WSTbet.py ",
-    queue="pipeline9",
+    queue="pipeline2",
     dag=reddit_WSB_dag)
 
 
