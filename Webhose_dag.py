@@ -61,5 +61,11 @@ reddit_WSB_sh = BashOperator(
     queue="pipeline2",
     dag=reddit_WSB_dag)
 
+robintrack_sh = BashOperator(
+    task_id='Robintrack',
+    bash_command="python3 /home/ec2-user/GET_Webhose/robintrack.py ",
+    queue="pipeline2",
+    dag=reddit_WSB_dag)
+
 
 
