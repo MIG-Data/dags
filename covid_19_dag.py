@@ -27,7 +27,7 @@ default_args = {
 
 dag1 = DAG('covid_19_JHU', default_args=default_args, schedule_interval= '30 19 * * *')
 dag2 = DAG('covid_19_case_race', default_args=default_args, schedule_interval= '30 19 * * *')
-dag3 = DAG('covid_19_CDC_case_death_age', default_args=default_args, schedule_interval= '30 19 * * *')
+dag3 = DAG('covid_19_CDC_case_death_age', default_args=default_args, schedule_interval= '30 19 * * mon')
 global_case_sh = BashOperator(
     task_id='JHU_global_case_scrape',
     bash_command="python3 /home/ec2-user/COVID/JHU_daily_global_case_parse.py ",
