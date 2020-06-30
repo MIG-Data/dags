@@ -39,7 +39,7 @@ case_death_sh = BashOperator(
     queue="pipeline2",
     dag=dag2)
 
-CDC_case_death_age_sh = BashOperator(
+cdc_case_death_age_sh = BashOperator(
     task_id='CDC_case_death_age_scrape',
     bash_command="python3 /home/ec2-user/COVID/CDC_case_death_age_group.py ",
     queue="pipeline2",
