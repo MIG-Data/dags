@@ -25,20 +25,26 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('covid_19', default_args=default_args, schedule_interval= '30 19 * * *')
-
+dag1 = DAG('covid_19_JHU', default_args=default_args, schedule_interval= '30 19 * * *')
+dag2 = DAG('covid_19_case_race', default_args=default_args, schedule_interval= '30 19 * * *')
+dag3 = DAG('covid_19_CDC_case_death_age', default_args=default_args, schedule_interval= '30 19 * * *')
 global_case_sh = BashOperator(
     task_id='JHU_global_case_scrape',
     bash_command="python3 /home/ec2-user/COVID/JHU_daily_global_case_parse.py ",
     queue="pipeline2",
-    dag=dag)
+    dag=dag1)
 case_death_sh = BashOperator(
     task_id='case_death_race_ethnicity_scrape',
     bash_command="python3 /home/ec2-user/COVID/case_death_race_ethnicity_scrape.py ",
     queue="pipeline2",
-    dag=dag)
+    dag=dag2)
+
+CDC_case_death_age_sh = BashOperator(
+    task_id='CDC_case_death_age_scrape',
+    bash_command="python3 /home/ec2-user/COVID/CDC_case_death_age_group.py ",
+    queue="pipeline2",
+    dag=dag3)
 
 
 
 
-global_case_sh.set_downstream(case_death_sh)
