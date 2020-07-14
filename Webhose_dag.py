@@ -42,7 +42,7 @@ def outer_task_success_callback(context, email):
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 6, 24),
+    'start_date': datetime(2020, 7, 12),
      'end_date' : None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
@@ -54,6 +54,7 @@ default_args = {
 
 
 reddit_WSB_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '0 20 * * *')
+WSBET_process_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '0 20 * * *')
 
 reddit_WSB_sh = BashOperator(
     task_id='reddit_WSB',
@@ -66,6 +67,13 @@ robintrack_sh = BashOperator(
     bash_command="python3 /home/ec2-user/GET_Webhose/robintrack.py ",
     queue="pipeline2",
     dag=reddit_WSB_dag)
+
+WSTBET_process_sh = BashOperator(
+    task_id='WSTBET_process',
+    bash_command="python3 /home/ec2-user/GET_Webhose/wstbet_text_stock_analysis_updated.py ",
+    queue="pipeline2",
+    dag=WSBET_process_dag)
+	
 
 
 
