@@ -55,6 +55,11 @@ default_args = {
 
 thelayoff_dag = DAG('thelayoff_dag', default_args=default_args, schedule_interval= '0 20 * * *')
 
+thelayoff_sh = BashOperator(
+    task_id='thelayoff_scrape',
+    bash_command="python3 /home/ec2-user/THE_LAYOFF/thelayoff_scrape.py ",
+    queue="pipeline2",
+    dag=thelayoff_dag)
 
 
 thelayoff_process_sh = BashOperator(
@@ -62,6 +67,8 @@ thelayoff_process_sh = BashOperator(
     bash_command="python3 /home/ec2-user/THE_LAYOFF/thelayoff_process.py ",
     queue="pipeline2",
     dag=thelayoff_dag)
+
+thelayoff_sh.set_downstream(thelayoff_process_sh)
 
 
 
