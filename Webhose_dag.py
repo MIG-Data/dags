@@ -54,7 +54,7 @@ default_args = {
 
 
 reddit_WSB_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '0 20 * * *')
-wstbet_process_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '0 20 * * *')
+
 
 reddit_WSB_sh = BashOperator(
     task_id='reddit_WSB',
@@ -72,7 +72,10 @@ WSTBET_process_sh = BashOperator(
     task_id='WSTBET_process',
     bash_command="python3 /home/ec2-user/GET_Webhose/wstbet_text_stock_analysis_updated.py ",
     queue="pipeline2",
-    dag=wstbet_process_dag)
+    dag=reddit_WSB_dag)
+
+robintrack_sh.set_downstream(reddit_WSB_sh)
+reddit_WSB_sh.set_downstream(WSTBET_process_sh)
 	
 
 
