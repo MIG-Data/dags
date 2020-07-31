@@ -53,7 +53,7 @@ default_args = {
 }
 
 
-thelayoff_dag = DAG('thelayoff_dag', default_args=default_args, schedule_interval= '0 20 * * *')
+thelayoff_dag = DAG('thelayoff_dag', default_args=default_args, schedule_interval= '@weekly')
 
 thelayoff_sh = BashOperator(
     task_id='thelayoff_scrape',
