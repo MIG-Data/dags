@@ -30,7 +30,7 @@ PDT_dag = DAG('OPENTABLE_PDT_dag', default_args=default_args, schedule_interval=
 
 EDT_sh = BashOperator(
     task_id='OPENTABLE_EDT_SCRAPE',
-    bash_command="/home/ec2-user/OPENTABLE/OPENTABLE_scrape-EDT.sh ",
+    bash_command="python3 /home/ec2-user/OPENTABLE/Opentable_scraping_aws.py EDT ",
     queue="pipeline5",
     dag=EDT_dag)
 
@@ -38,18 +38,18 @@ EDT_sh = BashOperator(
 
 CDT_sh = BashOperator(
     task_id='OPENTABLE_CDT_SCRAPE',
-    bash_command="/home/ec2-user/OPENTABLE/OPENTABLE_scrape-CDT.sh ",
+    bash_command="python3 /home/ec2-user/OPENTABLE/Opentable_scraping_aws.py CDT ",
     queue="pipeline5",
     dag=CDT_dag)
 
 MDT_sh = BashOperator(
     task_id='OPENTABLE_MDT_SCRAPE',
-    bash_command="/home/ec2-user/OPENTABLE/OPENTABLE_scrape-MDT.sh ",
+    bash_command="python3 /home/ec2-user/OPENTABLE/Opentable_scraping_aws.py MDT ",
     queue="pipeline5",
     dag=MDT_dag)
 
 PDT_sh = BashOperator(
     task_id='OPENTABLE_PDT_SCRAPE',
-    bash_command="/home/ec2-user/OPENTABLE/OPENTABLE_scrape-PDT.sh ",
+    bash_command="python3 /home/ec2-user/OPENTABLE/Opentable_scraping_aws.py PDT ",
     queue="pipeline5",
     dag=PDT_dag)
