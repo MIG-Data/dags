@@ -48,7 +48,7 @@ default_args = {
     'email_on_failure': True,
     'email_on_retry': True,
     'on_success_callback': task_success_callback,
-    'retries': 2,
+    'retries': 0,
     'retry_delay': timedelta(minutes=5)
 }
 
