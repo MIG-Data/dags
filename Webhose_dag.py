@@ -53,7 +53,7 @@ default_args = {
 }
 
 
-reddit_WSB_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '@weekly')
+reddit_WSB_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '@daily')
 
 
 reddit_WSB_sh = BashOperator(
