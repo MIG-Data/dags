@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 default_args = {
     'owner': 'MIG',
     'depends_on_past': False,
-    'start_date': datetime(2020,3,5),
+    'start_date': datetime(2020,10,8),
     'end_date': None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
