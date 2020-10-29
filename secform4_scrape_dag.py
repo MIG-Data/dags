@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 5, 1),
+    'start_date': datetime(2020, 10, 27),
     'end_date': None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
