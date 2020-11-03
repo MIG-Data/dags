@@ -39,9 +39,9 @@ dag = DAG('Keepa_Amazon_dag', default_args=default_args, schedule_interval= '30 
 
 amazon_scrape = BashOperator(
     task_id='keepa_amazon',
-    bash_command="python3 /home/ec2-user/AMAZON/Keepa_API.py ",
-	email_on_failure = True,
-	email = email_list,
+    bash_command="python3 /home/ec2-user/AMAZON/Keepa_API.py",
+    email_on_failure = True,
+    email = email_list,
     queue='pipeline9',
     dag=dag)
 
