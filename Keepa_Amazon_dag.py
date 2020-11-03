@@ -30,7 +30,7 @@ default_args = {
     'email_on_failure': True,
     'email_on_retry': True,
     'retries': 5,
-	'wait_for_downstream': True,
+    'wait_for_downstream': False,
     'retry_delay': timedelta(minutes=5)
 }
 
@@ -39,7 +39,7 @@ dag = DAG('Keepa_Amazon_dag', default_args=default_args, schedule_interval= '30 
 
 amazon_scrape = BashOperator(
     task_id='keepa_amazon',
-    bash_command="python3 /home/ec2-user/AMAZON/Keepa_API.py",
+    bash_command="python3 /home/ec2-user/AMAZON/Keepa_API.py ",
     email_on_failure = True,
     email = email_list,
     queue='pipeline9',
