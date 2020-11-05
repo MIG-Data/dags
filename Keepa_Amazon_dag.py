@@ -42,7 +42,7 @@ amazon_scrape = BashOperator(
     bash_command="python3 /home/ec2-user/AMAZON/Keepa_API.py ",
     email_on_failure = True,
     email = email_list,
-    queue='pipeline9',
+    queue='pipeline2',
     dag=dag)
 
 
