@@ -28,7 +28,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('PLAY', default_args=default_args, schedule_interval= '@daily')
+dag = DAG('PLAY', default_args=default_args, schedule_interval= '0 20 * * *')
 
 DE_sh = BashOperator(
     task_id='PLAY',
