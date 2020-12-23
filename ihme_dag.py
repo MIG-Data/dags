@@ -54,6 +54,12 @@ covid_sh = BashOperator(
     queue="pipeline5",
     dag=dag3)
 
+covid_ltc_sh = BashOperator(
+    task_id='SCRAPE',
+    bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/covidtracking_LTC.py ",
+    queue="pipeline5",
+    dag=dag3)
+
 flight_sh = BashOperator(
     task_id='SCRAPE',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/flightradar.py ",
