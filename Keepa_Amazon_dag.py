@@ -45,4 +45,14 @@ amazon_scrape = BashOperator(
     queue='pipeline2',
     dag=dag)
 
+amazon_keepa_scrape = BashOperator(
+    task_id='keepa_amazon_bestseller',
+    bash_command="python3 /home/ec2-user/AMAZON/Keepa_Amazon_Bestseller.py ",
+    email_on_failure = True,
+    email = email_list,
+    queue='pipeline2',
+    dag=dag)
+
+amazon_scrape.set_downstream(amazon_keepa_scrape)
+
 
