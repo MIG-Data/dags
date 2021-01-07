@@ -60,11 +60,11 @@ default_args = {
 }
 
 
-reddit_api_WSB_dag = DAG('Webhose_dag', default_args=default_args, schedule_interval= '@daily')
+reddit_api_WSB_dag = DAG('reddit_api_WSB_dag', default_args=default_args, schedule_interval= '@daily')
 
 
 reddit_WSB_sh = BashOperator(
-    task_id='reddit_WSB',
+    task_id='reddit_api_WSB',
     bash_command="python3 /home/ec2-user/GET_Webhose/reddit_api_wstbet.py ",
     queue="pipeline2",
     dag=reddit_api_WSB_dag)
