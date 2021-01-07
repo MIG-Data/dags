@@ -60,7 +60,7 @@ default_args = {
 }
 
 
-reddit_api_WSB_dag = DAG('reddit_api_WSB_dag', default_args=default_args, schedule_interval= ''0 5 * * *'')
+reddit_api_WSB_dag = DAG('reddit_api_WSB_dag', default_args=default_args, schedule_interval= '0 5 * * *')
 
 
 reddit_WSB_sh = BashOperator(
