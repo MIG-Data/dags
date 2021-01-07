@@ -49,7 +49,7 @@ def outer_task_success_callback(context, email):
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 7, 12),
+    'start_date': datetime(2021, 1, 6),
      'end_date' : None,
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
