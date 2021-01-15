@@ -75,7 +75,7 @@ WSTBET_process_sh = BashOperator(
     task_id='WSTBET_process',
     bash_command="python3 /home/ec2-user/GET_Webhose/wstbet_text_stock_analysis_updated.py ",
     queue="pipeline2",
-    dag=reddit_WSB_dag)
+    dag=reddit_api_WSB_dag)
 
 
 reddit_WSB_sh.set_downstream(WSTBET_process_sh)
