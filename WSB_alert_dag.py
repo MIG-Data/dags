@@ -46,8 +46,8 @@ default_args = {
     'email': ['tcai@migcap.com', 'yjeon@migcap.com'],
     'email_on_failure': True,
     'email_on_retry': True,
-    'on_success_callback': task_success_callback,
-    'retries': 0,
+    'on_success_callback': False,
+    'retries': 3,
     'retry_delay': timedelta(minutes=5)
 }
 
