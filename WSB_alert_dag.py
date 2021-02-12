@@ -52,7 +52,7 @@ default_args = {
 }
 
 
-WSB_alert_dag = DAG('WSB_alert_dag', default_args=default_args, schedule_interval= '*/5 * * * *')
+WSB_alert_dag = DAG('WSB_alert_dag', default_args=default_args, schedule_interval= '*/15 * * * *')
 
 
 reddit_WSB_sh = BashOperator(
