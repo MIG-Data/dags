@@ -49,25 +49,25 @@ ihme_sh2 = BashOperator(
     dag=dag2)
 
 covid_sh = BashOperator(
-    task_id='SCRAPE',
+    task_id='Covidtracking',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/covidtracking.py ",
     queue="pipeline5",
     dag=dag3)
 
 covid_ltc_sh = BashOperator(
-    task_id='SCRAPE',
+    task_id='Covidtracking_LTC',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/covidtracking_LTC.py ",
     queue="pipeline5",
     dag=dag3)
 
 flight_sh = BashOperator(
-    task_id='SCRAPE',
+    task_id='Flightradar',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/flightradar.py ",
     queue="pipeline5",
     dag=dag4)
 
 mta_sh = BashOperator(
-    task_id='SCRAPE',
+    task_id='MTA',
     bash_command="source /home/ec2-user/.venv/bin/activate && python /home/ec2-user/IHME/mta.py ",
     queue="pipeline5",
     dag=dag5)
