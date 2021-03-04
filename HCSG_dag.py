@@ -19,7 +19,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('HCSG', default_args=default_args, schedule_interval= '0 12 * * FRI')
+dag = DAG('HCSG', default_args=default_args, schedule_interval= '10 8 * * FRI')
 
 five_sh = BashOperator(
     task_id='SCRAPE',
