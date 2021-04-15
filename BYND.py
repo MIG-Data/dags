@@ -28,7 +28,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('GRPN', default_args=default_args, schedule_interval= '@weekly')
+dag = DAG('BYND', default_args=default_args, schedule_interval= '@weekly')
 
 DE_sh = BashOperator(
     task_id='BYND',
