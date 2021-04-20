@@ -56,7 +56,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-dag = DAG('daily_stock_price', default_args=default_args, schedule_interval= '0 1 * * *')
+dag = DAG('daily_stock_price', default_args=default_args, schedule_interval= None)
 
 daily_stock_price_sh = BashOperator(
     task_id='daily_stock_price_track',
