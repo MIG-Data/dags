@@ -63,3 +63,11 @@ daily_stock_price_sh = BashOperator(
     bash_command="python3 /home/ec2-user/GET_Webhose/historical_price.py ",
     queue="pipeline2",
     dag=dag)
+
+anomalous_stock_price_sh = BashOperator(
+    task_id='anomalous_stock_price_detect',
+    bash_command="python3 /home/ec2-user/stock_anomaly/stock_anomaly_detect.py ",
+    queue="pipeline5",
+    dag=dag)
+
+daily_stock_price_sh.set_downstream()
