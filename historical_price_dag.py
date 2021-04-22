@@ -70,4 +70,4 @@ anomalous_stock_price_sh = BashOperator(
     queue="pipeline5",
     dag=dag)
 
-daily_stock_price_sh.set_downstream()
+daily_stock_price_sh.set_downstream(anomalous_stock_price_sh)
